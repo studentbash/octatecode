@@ -107,8 +107,8 @@ export class CollaborationManager {
 				isActive: true
 			};
 
-			// Connect to server
-			await this._syncService.connect();
+			// Connect to server with session ID (roomId)
+			await this._syncService.connect(this._session.sessionId);
 
 			// Create room on server
 			this._syncService.createSession(roomName, fileId, userName);
@@ -147,8 +147,8 @@ export class CollaborationManager {
 					return null;
 				});
 
-			// Connect to server
-			await this._syncService.connect();
+			// Connect to server with session ID (roomId)
+			await this._syncService.connect(sessionId);
 
 			// Join room on server with room data
 			this._syncService.joinSession(sessionId, userName, roomData);
